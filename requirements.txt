@@ -1,0 +1,10 @@
+gspread
+google-auth
+openai
+apscheduler
+twilio
+pydantic
+python-dotenv
+requests
+pytz
+pandas
