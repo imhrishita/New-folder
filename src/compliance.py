@@ -2,10 +2,11 @@
 Compliance guardrail layer
 """
 
-import openai
+from openai import OpenAI
 from src.config import Config
 
-openai.api_key = Config.OPENAI_API_KEY
+# Initialize OpenAI client with the new API format
+client = OpenAI(api_key=Config.OPENAI_API_KEY)
 
 def classify_message(message):
     prompt = f"""
@@ -17,7 +18,7 @@ def classify_message(message):
     Respond with only one word: Approved, Requires Review, or Rejected.
     """
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=10
